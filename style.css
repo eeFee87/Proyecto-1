@@ -3,3 +3,41 @@
   padding: 0;
   box-sizing: content-box;
 }
+body {
+  min-height: 100vh;
+  background-color: ;
+}
+header {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+}
+header h1 {
+  padding: 2rem;
+  font-size: 4rem;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+article {
+  display: flex;
+  background: radial-gradient(#006666, #111);
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 19rem;
+  width: 14rem;
+  font-size: 8rem;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 3rem;
+  background-color: antiquewhite;
+}
