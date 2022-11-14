@@ -6,40 +6,37 @@
     en dos hasta revelar todas.
     #############################################
 */
+//Seleccionamos el main con id Tablero, dentro de esta etiqueta trabajaremos
 let tablero = document.querySelector('#tablero');
+//Escogemos los emojis que se usarán en un array
 const emojis = ['😵','🥵','🥶','😱','🌝','🤑','🤠','🎃',
                   '😵','🥵','🥶','😱','🌝','🤑','🤠','🎃'];
-const shuffleEmojis = [];
-
-function searchEmojis() {
-  let num = Math.round(Math.random() * 16);
-  return num;
-}
-let emoji = searchEmojis();
-console.log(emoji);
-
+//Cambiamos el orden el array de emojis
+emojis.sort(() => Math.random() - 0.5);
+/*
+Creamos la funcion generarCard será la 
+encarga de imprimir todas las carta de emojis con el orden random
+*/
 function generarCard() {
   const card = [];
+  //Declaramos un for por la cantidad de Cartas emojis que vamos a necesitar
   for (let i = 0; i < 16; i++) {
-    //emoji = searchEmojis();
-      card.push(`
+  //Guardamos en un array para luego mostrarlos
+    card.push(`
       <section class="card">
         <div class="content">
-          <div class="front">❔</div>
-          <div class="back">🌝</div>
+          <div class="front">${emojis[i]}</div>
+          <div class="back">❔</div>
         </div>
       </section>       
       `);
-      //console.log(i);
   }
-  //console.log(card);
-  //tarjetas.sort(() => Math.random() - 0.5)
+  //transformamos el array a string y imprimos dentro de la etiqueta main
   tablero.innerHTML = card.join(" ");
 }
-
 generarCard();
-let cards = document.querySelectorAll('.card');
 
+let cards = document.querySelectorAll('.card');
 const reveal = (e) => {
   const currentCard = e.currentTarget;
   currentCard.classList.add('flipped');
