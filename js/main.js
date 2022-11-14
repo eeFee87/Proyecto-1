@@ -34,7 +34,6 @@ console.log(shuffleEmojis);
 function generarCard() {
   const card = [];
   for (let i = 0; i < 16; i++) {
-    //emoji = searchEmojis();
     card.push(`
       <section class="card">
         <div class="content">
@@ -46,7 +45,7 @@ function generarCard() {
     //console.log(i);
   }
   //console.log(card);
-  //tarjetas.sort(() => Math.random() - 0.5)
+
   tablero.innerHTML = card.join(' ');
 }
 
@@ -55,11 +54,17 @@ let cards = document.querySelectorAll('.card');
 
 const reveal = (e) => {
   const currentCard = e.currentTarget;
-  currentCard.classList.add('flipped');
 
-  setTimeout(() => {
-    currentCard.classList.remove('flipped');
-  }, 1000);
+  currentCard.classList.add('flipped');
+  let flippeds = document.querySelectorAll('.flipped');
+
+  if (flippeds.length === 2) {
+    setTimeout(() => {
+      for (const flipped of flippeds) {
+        flipped.classList.remove('flipped');
+      }
+    }, 1000);
+  }
 };
 
 for (const card of cards) {
