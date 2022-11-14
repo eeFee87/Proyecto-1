@@ -7,13 +7,12 @@ body {
   min-height: 100vh;
 }
 header {
-  height: 10rem;
-  display: flex;
   justify-content: center;
 }
 header h1 {
   padding: 2rem;
   font-size: 4rem;
+  text-align: center;
 }
 main {
   display: flex;
@@ -21,9 +20,7 @@ main {
   gap: 1.5rem;
   justify-content: center;
 }
-article {
-  display: flex;
-
+section {
   border-radius: 10px;
   height: 19rem;
   width: 14rem;
