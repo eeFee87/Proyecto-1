@@ -7,34 +7,47 @@
     #############################################
 */
 let tablero = document.querySelector('#tablero');
-const emojis = ['😵','🥵','🥶','😱','🌝','🤑','🤠','🎃',
-                  '😵','🥵','🥶','😱','🌝','🤑','🤠','🎃'];
-const shuffleEmojis = [];
-
-function searchEmojis() {
-  let num = Math.round(Math.random() * 16);
-  return num;
-}
-let emoji = searchEmojis();
-console.log(emoji);
+const emojis = [
+  '😵',
+  '🥵',
+  '🥶',
+  '😱',
+  '🌝',
+  '🤑',
+  '🤠',
+  '🎃',
+  '😵',
+  '🥵',
+  '🥶',
+  '😱',
+  '🌝',
+  '🤑',
+  '🤠',
+  '🎃',
+];
+//En la variable shuffleEmojis guardamos el array pero desordenado cada vez que recargamos la pagina.
+const shuffleEmojis = emojis.sort(function () {
+  return Math.random() - 0.5;
+});
+console.log(shuffleEmojis);
 
 function generarCard() {
   const card = [];
   for (let i = 0; i < 16; i++) {
     //emoji = searchEmojis();
-      card.push(`
+    card.push(`
       <section class="card">
         <div class="content">
           <div class="front">❔</div>
-          <div class="back">🌝</div>
+          <div class="back">${shuffleEmojis[i]}</div>
         </div>
       </section>       
       `);
-      //console.log(i);
+    //console.log(i);
   }
   //console.log(card);
   //tarjetas.sort(() => Math.random() - 0.5)
-  tablero.innerHTML = card.join(" ");
+  tablero.innerHTML = card.join(' ');
 }
 
 generarCard();
