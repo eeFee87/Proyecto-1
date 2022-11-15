@@ -59,11 +59,18 @@ const reveal = (e) => {
   let flippeds = document.querySelectorAll('.flipped');
 
   if (flippeds.length === 2) {
-    setTimeout(() => {
-      for (const flipped of flippeds) {
-        flipped.classList.remove('flipped');
-      }
-    }, 1000);
+    if (
+      flippeds[0].childNodes[1].childNodes[3].textContent ===
+      flippeds[1].childNodes[1].childNodes[3].textContent
+    ) {
+      console.log('Pareja correcta');
+    } else {
+      setTimeout(() => {
+        for (const flipped of flippeds) {
+          flipped.classList.remove('flipped');
+        }
+      }, 1000);
+    }
   }
 };
 
