@@ -35,6 +35,7 @@ function generarCard() {
   }
   //transformamos el array a string y imprimos dentro de la etiqueta main
   tablero.innerHTML = card.join(" ");
+
 }
 
 function comparador(){
@@ -67,7 +68,9 @@ generarCard();
 let cards = document.querySelectorAll('.card');
 const reveal = (e) => {
   const currentCard = e.currentTarget;
+
   currentCard.classList.add('flipped');
+
 //Obtenemos las id de las cartas flipped y el emoji
   emojisSelected.unshift(emojis[currentCard.getAttribute('id')]); 
   idSelected.push(currentCard.getAttribute('id'));
@@ -83,8 +86,6 @@ const reveal = (e) => {
     alert("Se han hecho "+cont+" intentos");
   }
 };
-
-
 
 for (const card of cards) {
   card.addEventListener('click', reveal);
