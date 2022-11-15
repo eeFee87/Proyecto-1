@@ -5,17 +5,22 @@
     cartas tapadas que se pueden destapar de dos 
     en dos hasta revelar todas.
     #############################################
+
 */
 //Seleccionamos el main con id Tablero, dentro de esta etiqueta trabajaremos
 let tablero = document.querySelector('#tablero');
 //Escogemos los emojis que se usarán en un array
 const emojis = ['😵','🥵','🥶','😱','🌝','🤑','🤠','🎃',
                   '😵','🥵','🥶','😱','🌝','🤑','🤠','🎃'];
+
+/*const emojis = ['😵','🥵',
+                  '😵','🥵'];
+*/
 //Cambiamos el orden el array de emojis
 emojis.sort(() => Math.random() - 0.5);
 const emojisSelected = [];
 const idSelected = [];
-let cont = 0;
+let count = 0;
 
 //Creamos la funcion generarCard será la 
 //encarga de imprimir todas las carta de emojis con el orden random
@@ -33,9 +38,8 @@ function generarCard() {
       </section>       
       `);
   }
-  //transformamos el array a string y imprimos dentro de la etiqueta main
+  //convertimos el array a string y imprimos dentro de la etiqueta main
   tablero.innerHTML = card.join(" ");
-
 }
 
 function comparador(){
@@ -68,22 +72,34 @@ generarCard();
 let cards = document.querySelectorAll('.card');
 const reveal = (e) => {
   const currentCard = e.currentTarget;
-
   currentCard.classList.add('flipped');
-
 //Obtenemos las id de las cartas flipped y el emoji
-  emojisSelected.unshift(emojis[currentCard.getAttribute('id')]); 
+  emojisSelected.push(emojis[currentCard.getAttribute('id')]); 
   idSelected.push(currentCard.getAttribute('id'));
   if(!currentCard.classList.contains('cardsOk')){
     if(idSelected.length===2){
   //Comparador de cartas
       comparador(); 
   //Contador para el números de intentos    
-    cont++;
+    count++;
     }
   }
   if(document.getElementsByClassName('flipped').length === 16){
-    alert("Se han hecho "+cont+" intentos");
+    setTimeout(() => {
+      if(count===8){
+        alert("\t\t\t\t"+count+" intentos\n \t\t Lo has petado 💪\n \tYo no lo hubiera hecho mejor!! 😈");
+      } else if (count>16){
+        alert("\t\t\t\t"+count+" intentos\n \t 🧟🧟creo que un zombie ha pasado por aquí🧠🧠");
+      } else {
+        alert("Has hecho "+count+" intentos");
+      }
+      
+      if(confirm("¿Quieres intentarlo de nuevo?")){
+        location.reload();
+      } else{
+        alert("GRACIAS POR JUGAR!!");
+      }
+    }, 600); 
   }
 };
 
