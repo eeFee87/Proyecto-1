@@ -39,13 +39,13 @@ function generarCard() {
 
 function comparador(){
   if(emojisSelected[0]===emojisSelected[1]){
-    //Cartas iguales
-    console.log('Ganaste');
+    //CARTAS IGUALES
     for (const i of idSelected) {
       const flipped = document.getElementById(`${i}`);
       flipped.classList.add('cardsOk');
     }
     idSelected.splice(0, idSelected.length);
+    emojisSelected.splice(0, emojisSelected.length);
   } else{
     deseleccionar();
   }  
@@ -58,6 +58,7 @@ function deseleccionar(){
       flipped.classList.remove('flipped');
     }
     idSelected.splice(0, idSelected.length);
+    emojisSelected.splice(0, emojisSelected.length);
   }, 1000); 
 }
 
@@ -78,11 +79,12 @@ const reveal = (e) => {
     cont++;
     }
   }
-
-  if(document.getElementsByClassName('cardsOk').length === 16){
-    alert("Se han hecho "+result+" intentos");
+  if(document.getElementsByClassName('flipped').length === 16){
+    alert("Se han hecho "+cont+" intentos");
   }
 };
+
+
 
 for (const card of cards) {
   card.addEventListener('click', reveal);
